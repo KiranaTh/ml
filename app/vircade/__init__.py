@@ -5,12 +5,11 @@ import flask
 
 app = Flask(__name__)
 
-# Firebase
 @app.route('/')
 def working():
    return "This is working"
 
-@app.route('/model/classify', methods=['GET', 'POST'])
+@app.route('/model/classify', methods=['GET', 'PUT'])
 def test():
   json = request.get_json()
   gameID = json['gameID']
@@ -23,9 +22,12 @@ def test():
   x = []
   x.append(ml)
   y_pred = v_model.predict(x, song)
+  send_json = {"gameID": gameID, "userId": userId, "y_pred": y_pred}
+  result = v_firebase.datasets.update(send_json["gameID"],send_json["userId"],send_json["y_pred"])
 
   return flask.jsonify({
       "data": y_pred,
+      "put": result
   })
 
     
