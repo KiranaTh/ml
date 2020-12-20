@@ -1,5 +1,5 @@
 from flask import Flask,request
-from controllers import v_firebase, v_model
+# from controllers import v_firebase, v_model
 # from .controllers.v_firebase import datasets
 # from .controllers.v_model import loadModel, predict
 import json
