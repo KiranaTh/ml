@@ -1,1 +1,1 @@
-web: gunicorn app.vircade: app
+web: gunicorn app.vircade: app --preload 

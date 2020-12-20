@@ -1,7 +1,7 @@
 from flask import Flask,request
 # from controllers import v_firebase, v_model
-from controllers.v_firebase import datasets
-from controllers.v_model import loadModel, predict
+from .controllers.v_firebase import datasets
+from .controllers.v_model import loadModel, predict
 import json
 import flask
 
@@ -58,4 +58,4 @@ def datasets_list():
 
 
 if __name__=='__main__':
-   app.run()
+   app.run(debug=True)
