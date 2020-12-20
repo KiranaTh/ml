@@ -1,5 +1,5 @@
 from flask import Flask,request
-from ./controllers import v_firebase, v_model
+from controllers import v_firebase, v_model
 import json
 import flask
 
