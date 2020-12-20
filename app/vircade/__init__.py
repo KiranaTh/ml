@@ -1,5 +1,7 @@
 from flask import Flask,request
-from controllers import v_firebase, v_model
+# from controllers import v_firebase, v_model
+from controllers.v_firebase import datasets
+from controllers.v_model import loadModel, predict
 import json
 import flask
 
@@ -21,9 +23,12 @@ def test():
             ml[i][j]= float(ml[i][j])
   x = []
   x.append(ml)
-  y_pred = v_model.predict(x, song)
+#   y_pred = v_model.predict(x, song)
+  y_pred = predict(x, song)
   send_json = {"gameID": gameID, "userId": userId, "y_pred": y_pred}
-  result = v_firebase.datasets.update(send_json["gameID"],send_json["userId"],send_json["y_pred"])
+#   result = v_firebase.datasets.update(send_json["gameID"],send_json["userId"],send_json["y_pred"])
+  result = datasets.update(send_json["gameID"],send_json["userId"],send_json["y_pred"])
+
 
   return flask.jsonify({
       "data": y_pred,
