@@ -50,7 +50,7 @@ pycryptodome==3.9.9
 pylint==2.6.0
 pyrsistent==0.17.3
 python-dateutil==2.8.1
-python-firebase==1.2.1
+python-firebase==1.2
 python-jwt==2.0.1
 pytz==2020.4
 PyYAML==5.3.1
@@ -71,6 +71,5 @@ termcolor==1.1.0
 threadpoolctl==2.1.0
 toml==0.10.1
 urllib3==1.25.10
-waitress==1.4.4
 Werkzeug==1.0.1
 wrapt==1.12.1
