@@ -34,11 +34,11 @@ def test():
 
 #   y_pred = v_model.predict(x, song)
   y_pred = predict(x, song)
-  print(y_pred)
+  print("y_pred"+str(y_pred))
   send_json = {"gameID": gameID, "userId": userId, "y_pred": y_pred}
 #   result = v_firebase.datasets.update(send_json["gameID"],send_json["userId"],send_json["y_pred"])
   result = update(send_json["gameID"],send_json["userId"],send_json["y_pred"])
-  print(result)
+  print("result: "+result)
   time.sleep(3)
   return flask.jsonify({
       "data": y_pred,
