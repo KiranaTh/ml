@@ -6,7 +6,7 @@ import tensorflow as tf
 import keras
 from os import path
 from scipy import stats
-
+from waitress import serve
 from firebase import firebase
 
 # init
@@ -81,5 +81,5 @@ def datasets_list():
 
 
 if __name__=='__main__':
-   app.run(host='0.0.0.0',debug=True)
+   serve(app.vercade, host='0.0.0.0', port=8000 ,debug=True)
 
