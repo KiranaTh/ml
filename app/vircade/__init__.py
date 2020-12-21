@@ -19,7 +19,7 @@ app = Flask(__name__)
 def working():
    return "This is working"
 
-@app.route('/model/classify', methods=['GET', 'PUT'])
+@app.route('/model/classify', methods=['POST', 'PUT'])
 def test():
   json = request.get_json()
   gameID = json['gameID']
