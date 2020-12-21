@@ -45,7 +45,7 @@ def test():
 
 def predict(x, s):
     song = s
-    songs = ['Cha Cha Slide', 'Laxed Siren Beat Loop', 'Like That', 'Lose Control', 'Plain Jain', 'Treasure']
+    songs = ['We Are One','All The Same','Alive','Treasure']
     indx = songs.index(song)
     model = keras.models.load_model(MODEL_PATH)
     y_pred = model.predict(np.array(x))
