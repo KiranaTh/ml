@@ -7,6 +7,7 @@ import keras
 from os import path
 from scipy import stats
 from firebase import firebase
+from waitress import serve
 
 # init
 firebase = firebase.FirebaseApplication('https://vircade-4c1d4.firebaseio.com/', authentication=None)
@@ -80,5 +81,5 @@ def datasets_list():
 
 
 if __name__=='__main__':
-   app.run(host='0.0.0.0',debug=True)
+   serve(app, host='0.0.0.0', port=port ,debug=True)
 
