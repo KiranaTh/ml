@@ -57,8 +57,8 @@ def predict(x, s):
     return float(result)*int(100)
 
 def update(gameID, userId, score):
-        res = firebase.put('/test/'+gameID+'/'+userId, 'score', score)
-        result = '/games/'+gameID+'/'+userId
+        res = firebase.put('/games/'+gameID+'/'+userId, 'score', score)
+        result = '/games/'+gameID+'/'+userId+'/score/'+str(score)
         return result
 
     
