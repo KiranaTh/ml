@@ -19,7 +19,7 @@ app = Flask(__name__)
 def working():
    return "This is working"
 
-@app.route('/model/classify', methods=['GET', 'PUT'])
+@app.route('/model/classify', methods=['POST', 'PUT'])
 def test():
   json = request.get_json()
   gameID = json['gameID']
@@ -37,7 +37,7 @@ def test():
 #   result = v_firebase.datasets.update(send_json["gameID"],send_json["userId"],send_json["y_pred"])
   result = update(send_json["gameID"],send_json["userId"],send_json["y_pred"])
 
-
+  time.sleep(3)
   return flask.jsonify({
       "data": y_pred,
       "put": result
