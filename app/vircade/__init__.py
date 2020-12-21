@@ -1,7 +1,4 @@
 from flask import Flask,request
-# from controllers import v_firebase, v_model
-# from .controllers.v_firebase import datasets
-# from .controllers.v_model import loadModel, predict
 import json
 import flask
 import numpy as np
@@ -9,12 +6,11 @@ import tensorflow as tf
 import keras
 from os import path
 from scipy import stats
-
 from firebase import firebase
 
 # init
 firebase = firebase.FirebaseApplication('https://vircade-4c1d4.firebaseio.com/', authentication=None)
-MODEL_PATH = '../../model/model.h5'
+MODEL_PATH = './model/model.h5'
 
 app = Flask(__name__)
 
