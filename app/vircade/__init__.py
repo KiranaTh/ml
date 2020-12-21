@@ -19,7 +19,7 @@ app = Flask(__name__)
 def working():
    return "This is working"
 
-@app.route('/model/classify', methods=['GET', 'PUT'])
+@app.route('/model/classify', methods=['POST', 'PUT'])
 def test():
   json = request.get_json()
   gameID = json['gameID']
@@ -59,13 +59,17 @@ def update(gameID, userId, score):
         return result
 
     
-@app.route('/test-json', methods=['GET', 'POST'])
-def test_json():
-  json = request.get_json()      
+@app.route('/test-params', methods=['GET', 'POST'])
+def test_params():
+  json = request.get_json()
+  form_data = request.form    # body (form data)
+  params = request.args       # args (in url)
   return flask.jsonify({
     'success': True,
     'data': {
       'json': json,
+      'form_data': form_data,
+      'params': params,
     }
   })
 
