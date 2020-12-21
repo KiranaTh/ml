@@ -26,9 +26,6 @@ def test():
   userId = json['userId']
   ml = json['ml']
   song = json['song']
-  print(gameID)
-  print(userId)
-  print(song)
   for i in range(0, len(ml)):
      for j in range(0, len(ml[i])):
             ml[i][j]= float(ml[i][j])
@@ -37,10 +34,11 @@ def test():
 
 #   y_pred = v_model.predict(x, song)
   y_pred = predict(x, song)
+  print(y_pred)
   send_json = {"gameID": gameID, "userId": userId, "y_pred": y_pred}
 #   result = v_firebase.datasets.update(send_json["gameID"],send_json["userId"],send_json["y_pred"])
   result = update(send_json["gameID"],send_json["userId"],send_json["y_pred"])
-
+  print(result)
   time.sleep(3)
   return flask.jsonify({
       "data": y_pred,
