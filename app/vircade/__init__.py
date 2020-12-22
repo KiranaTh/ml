@@ -8,6 +8,7 @@ from os import path
 from scipy import stats
 from waitress import serve
 from firebase import firebase
+import time
 
 # init
 firebase = firebase.FirebaseApplication('https://vircade-4c1d4.firebaseio.com/', authentication=None)
@@ -34,12 +35,12 @@ def test():
 
 #   y_pred = v_model.predict(x, song)
   y_pred = predict(x, song)
-  print("y_pred"+str(y_pred))
+  print("y_pred: "+str(y_pred))
   send_json = {"gameID": gameID, "userId": userId, "y_pred": y_pred}
 #   result = v_firebase.datasets.update(send_json["gameID"],send_json["userId"],send_json["y_pred"])
   result = update(send_json["gameID"],send_json["userId"],send_json["y_pred"])
   print("result: "+result)
-  time.sleep(3)
+  time.sleep(5)
   return flask.jsonify({
       "data": y_pred,
       "put": result
@@ -56,6 +57,9 @@ def predict(x, s):
     return float(result)*int(100)
 
 def update(gameID, userId, score):
+        print(gameID)
+        print(userId)
+        print(score)
         res = firebase.put('/games/'+gameID+'/'+userId, 'score', score)
         result = '/games/'+gameID+'/'+userId+'/score/'+str(score)
         return result
