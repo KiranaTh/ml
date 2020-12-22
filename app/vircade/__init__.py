@@ -33,11 +33,9 @@ def test():
   x = []
   x.append(ml)
 
-#   y_pred = v_model.predict(x, song)
   y_pred = predict(x, song)
   print("y_pred: "+str(y_pred))
   send_json = {"gameID": gameID, "userId": userId, "y_pred": y_pred}
-#   result = v_firebase.datasets.update(send_json["gameID"],send_json["userId"],send_json["y_pred"])
   result = update(send_json["gameID"],send_json["userId"],send_json["y_pred"])
   print("result: "+result)
   time.sleep(5)
@@ -59,12 +57,12 @@ def predict(x, s):
 def update(gameID, userId, score):
         print(gameID)
         print(userId)
-        score = 75
+        print(score)
         res = firebase.put('/games/'+gameID+'/'+userId, 'score', score)
         result = '/games/'+gameID+'/'+userId+'/score/'+str(score)
         return result
 
-    
+#test    
 @app.route('/test-params', methods=['GET', 'POST'])
 def test_params():
   json = request.get_json()
