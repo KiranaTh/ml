@@ -59,7 +59,7 @@ def predict(x, s):
 def update(gameID, userId, score):
         print(gameID)
         print(userId)
-        print(score)
+        score = 75
         res = firebase.put('/games/'+gameID+'/'+userId, 'score', score)
         result = '/games/'+gameID+'/'+userId+'/score/'+str(score)
         return result
