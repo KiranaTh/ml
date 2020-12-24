@@ -52,6 +52,7 @@ def predict(x, s):
     y_pred = model.predict(np.array(x))
     result = (max(y_pred.tolist()))[indx]
     result = "{:.2f}".format(result)
+    print(y_pred)
     return float(result)*int(100)
 
 def update(gameID, userId, score):
